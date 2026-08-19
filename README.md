@@ -22,10 +22,10 @@ Entire stack runs in a single Docker container via `docker-compose`, requiring n
 ## Screenshots
 
 **Workflow running end-to-end:**
-![Workflow canvas](screenshots/01-workflow-canvas.png)
+![Workflow canvas](screenshots/workflow-canvas.png)
 
 **Live Telegram notification:**
-![Telegram notification](screenshots/02-telegram-notification.png)
+![Telegram notification](screenshots/telegram-notification.png)
 
 ## Tech used
 
