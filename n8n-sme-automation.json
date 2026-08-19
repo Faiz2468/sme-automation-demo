@@ -1,0 +1,141 @@
+{
+  "name": "SME Order Notification Automation",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "bc6858e4-3202-4d17-9023-ce8241289f83",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://jsonplaceholder.typicode.com/comments/1",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "5022a4ae-39ed-4a12-ae64-9fdd289c137e",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "997faf62-bddd-4bb4-9716-9f74188f7a58",
+              "name": "order_id",
+              "value": "ORD-1001",
+              "type": "string"
+            },
+            {
+              "id": "4c8614bf-8103-448c-b22f-05d04fd4cd71",
+              "name": "customer_name",
+              "value": "Ahmad Faiz",
+              "type": "string"
+            },
+            {
+              "id": "999c9fec-7133-40df-b7ba-782602d42abc",
+              "name": "item",
+              "value": "BedLock Clip x2",
+              "type": "string"
+            },
+            {
+              "id": "d08a0bba-7485-4352-8c17-a4ba76c85399",
+              "name": "status",
+              "value": "pending",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        416,
+        0
+      ],
+      "id": "a65dd769-e4f0-46a1-8e09-2b04f86ba078",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "chatId": "6197766264",
+        "text": "=New order received! Order ID: {{ $json.order_id }} Customer: {{ $json.customer_name }} Item: {{ $json.item }} Status: {{ $json.status }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        624,
+        0
+      ],
+      "id": "60f5fb94-e3a7-4c32-a7d2-eb8ec56e7c62",
+      "name": "Send a text message",
+      "webhookId": "8a2d54ee-c49d-487e-a295-4e2d68b02d80",
+      "credentials": {
+        "telegramApi": {
+          "id": "tHetgT5rehFcl4KM",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "a388e2b2-6790-4837-9545-967b4d26da85",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e0c981433aacab4d8ad9c0c2a3152496c30ed3c32b46ba961b4fd3163afeb293"
+  },
+  "id": "CpZjCF13dM5kMxkH",
+  "tags": []
+}
