@@ -15,7 +15,7 @@ An automated workflow built in [n8n](https://n8n.io) (open-source, self-hosted) 
 4. Sends an instant notification via Telegram — simulating an owner or staff member being alerted the moment an order comes in
 
 ## Architecture
-Trigger → HTTP Request → Edit Fields (structure order data) → Telegram (notify)
+Trigger → HTTP Request → Edit Fields (structure order data) → Telegram
 
 Entire stack runs in a single Docker container via `docker-compose`, requiring no cloud account, no credit card, and no paid service at any point.
 
@@ -27,11 +27,7 @@ Entire stack runs in a single Docker container via `docker-compose`, requiring n
 
 ## Outcome
 
-Reduces order-acknowledgment time from a manual, multi-minute process to instant — demonstrated live via the workflow JSON in this repo and the demo recording below.
-
-## Demo
-
-*(video link — add after recording)*
+Reduces order-acknowledgment time from a manual, multi-minute process to instant — demonstrated via the workflow JSON in this repo.
 
 ## Running it yourself
 
@@ -45,4 +41,4 @@ Then open `http://localhost:5678`, import `n8n-sme-automation.json`, and configu
 
 ## Why this project
 
-Built as part of a cloud/DevOps portfolio to demonstrate translating a real business problem into a working, deployed technical solution — using only free and open-source tools throughout.
+Built to demonstrate translating a real business problem into a working, deployed technical solution — using only free and open-source tools throughout.
