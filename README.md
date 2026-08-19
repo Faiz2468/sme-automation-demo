@@ -19,6 +19,14 @@ Trigger → HTTP Request → Edit Fields (structure order data) → Telegram
 
 Entire stack runs in a single Docker container via `docker-compose`, requiring no cloud account, no credit card, and no paid service at any point.
 
+## Screenshots
+
+**Workflow running end-to-end:**
+![Workflow canvas](screenshots/01-workflow-canvas.png)
+
+**Live Telegram notification:**
+![Telegram notification](screenshots/02-telegram-notification.png)
+
 ## Tech used
 
 - **n8n** — open-source workflow automation, self-hosted
